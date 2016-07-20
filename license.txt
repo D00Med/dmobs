@@ -19,7 +19,30 @@ You should have received a copy of the GNU Lesser General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-License for Textures, Models and Sounds
+License for Textures, Models
 ---------------------------------------
 
-CC-BY-SA 3.0 UNPORTED. Created by D00Med
+CC BY-SA 3.0 UNPORTED. Created by D00Med
+
+Roar.ogg - CC BY 3.0 Mike Koenig - http://soundbible.com/1165-Dinosaur-Roar.html
+Velociraptor.ogg - CC BY 3.0 snottyboi - http://soundbible.com/1373-Velociraptor-Call.html
+
+--License of lib_mount:
+-- Minetest mod: lib_mount
+-- =======================
+-- by blert2112
+
+-- Based on the Boats mod by PilzAdam.
+
+
+-- -----------------------------------------------------------
+-- -----------------------------------------------------------
+
+
+-- Minetest Game mod: boats
+-- ========================
+-- by PilzAdam
+
+-- License of source code:
+-- -----------------------
+-- WTFPL

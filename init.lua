@@ -1,5 +1,13 @@
 
+
 -- dmobs by D00Med
+
+--mounts api
+
+dofile(minetest.get_modpath("dmobs").."/api.lua")
+
+--enable dragons(disable to remove tamed dragons and dragon bosses)
+local dragons = true
 
 mobs:register_mob("dmobs:panda", {
 	type = "animal",
@@ -69,6 +77,7 @@ mobs:register_mob("dmobs:fox", {
 	armor = 130,
 	collisionbox = {-0.4, -0.6, -0.4, 0.3, 0.3, 0.3},
 	runaway = true,
+	pathfinding = true,
 	visual = "mesh",
 	mesh = "fox.b3d",
 	textures = {
@@ -102,7 +111,6 @@ mobs:register_mob("dmobs:fox", {
 		run_end = 16,
 		punch_start = 36,
 		punch_end = 51,
-
 	},
 	on_rightclick = function(self, clicker)
 
@@ -315,7 +323,11 @@ mobs:register_mob("dmobs:orc", {
 	},
 })
 
+if not dragons == true then
 mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
+else
+mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 350, 2, 31000)
+end
 
 mobs:register_egg("dmobs:orc", "Orc", "default_desert_sand.png", 1)
 
@@ -363,96 +375,15 @@ mobs:register_mob("dmobs:ogre", {
 	},
 })
 
+if not dragons == true then
 mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
+else
+mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 350, 2, 31000)
+end
 
 mobs:register_egg("dmobs:ogre", "Ogre", "default_desert_sand.png", 1)
 
-mobs:register_mob("dmobs:dragon", {
-   type = "monster",
-   passive = false,
-   attacks_monsters = true,
-   damage = 8,
-   reach = 2,
-   attack_type = "shoot",
-   shoot_interval = 2.5,
-   arrow = "dmobs:fire",
-   shoot_offset = 1,
-   hp_min = 30,
-   hp_max = 45,
-   armor = 80,
-   collisionbox = {-0.6, -0.9, -0.6, 0.6, 0.6, 0.6},
-   visual = "mesh",
-   mesh = "dragon_new.b3d",
-   textures = {
-      {"dmobs_dragon.png"},
-	  {"dmobs_dragon2.png"},
-	  {"dmobs_dragon3.png"},
-	  {"dmobs_dragon4.png"},
-   },
-   blood_texture = "mobs_blood.png",
-   visual_size = {x=3, y=3},
-   makes_footstep_sound = true,
-   sounds = {
-      shoot_attack = "mobs_fireball",
-   },
-   walk_velocity = 3,
-   run_velocity = 5,
-   jump = true,
-   fly = true,
-   drops = {
-      {name = "mobs:lava_orb", chance = 1, min = 1, max = 1},
-   },
-   fall_speed = 0,
-   stepheight = 10,
-   water_damage = 2,
-   lava_damage = 0,
-   light_damage = 0,
-   view_range = 20,
-   animation = {
-      speed_normal = 10,
-      speed_run = 20,
-      walk_start = 1,
-      walk_end = 22,
-      stand_start = 1,
-      stand_end = 22,
-      run_start = 1,
-      run_end = 22,
-      punch_start = 22,
-      punch_end = 47,
-   },
-})
 
-mobs:spawn_specific("dmobs:dragon", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
-   
-mobs:register_egg("dmobs:dragon", "Dragon", "default_apple.png", 1)
-
---Thanks to Tenplus1
-mobs:register_arrow("dmobs:fire", {
-   visual = "sprite",
-   visual_size = {x = 0.5, y = 0.5},
-   textures = {"dmobs_fire.png"},
-   velocity = 8,
-   tail = 1, -- enable tail
-   tail_texture = "dmobs_fire.png",
-
-   hit_player = function(self, player)
-      player:punch(self.object, 1.0, {
-         full_punch_interval = 1.0,
-         damage_groups = {fleshy = 8},
-      }, nil)
-   end,
-   
-   hit_mob = function(self, player)
-      player:punch(self.object, 1.0, {
-         full_punch_interval = 1.0,
-         damage_groups = {fleshy = 8},
-      }, nil)
-   end,
-
-   hit_node = function(self, pos, node)
-      mobs:explosion(pos, 2, 1, 1)
-   end,
-})
 
 mobs:register_mob("dmobs:badger", {
 	type = "animal",
@@ -510,3 +441,106 @@ mobs:register_spawn("dmobs:badger", {"default:dirt_with_grass","default:dirt"}, 
 
 mobs:register_egg("dmobs:badger", "Badger", "default_obsidian.png", 1)
 
+--dragon
+
+if dragons == true then
+dofile(minetest.get_modpath("dmobs").."/dragons.lua")
+else
+mobs:register_mob("dmobs:dragon", {
+   type = "monster",
+   passive = false,
+   attacks_monsters = true,
+   damage = 4,
+   reach = 3,
+   attack_type = "dogshoot",
+   shoot_interval = 2.5,
+	dogshoot_switch = 2,
+	dogshoot_count = 0,
+	dogshoot_count_max =5,
+   arrow = "dmobs:fire",
+   shoot_offset = 1,
+   hp_min = 70,
+   hp_max = 100,
+   armor = 100,
+	collisionbox = {-0.6, -1.2, -0.6, 0.6, 0.6, 0.6},
+   visual = "mesh",
+   mesh = "dragon.b3d",
+   textures = {
+      {"dmobs_dragon.png"},
+      {"dmobs_dragon2.png"},
+      {"dmobs_dragon3.png"},
+      {"dmobs_dragon4.png"},
+   },
+   blood_texture = "mobs_blood.png",
+   visual_size = {x=2, y=2},
+   makes_footstep_sound = true,
+	runaway = false,
+	jump_chance = 30,
+	walk_chance = 80,
+	fall_speed = 0,
+	pathfinding = true,
+	fall_damage = 0,
+   sounds = {
+      shoot_attack = "mobs_fireball",
+   },
+   walk_velocity = 3,
+   run_velocity = 5,
+   jump = true,
+   fly = true,
+   drops = {
+      {name = "mobs:lava_orb", chance = 1, min = 1, max = 1},
+   },
+   fall_speed = 0,
+   stepheight = 10,
+   water_damage = 2,
+   lava_damage = 0,
+   light_damage = 0,
+   view_range = 20,
+   animation = {
+      speed_normal = 10,
+      speed_run = 20,
+      walk_start = 1,
+      walk_end = 22,
+      stand_start = 1,
+      stand_end = 22,
+      run_start = 1,
+      run_end = 22,
+      punch_start = 22,
+      punch_end = 47,
+   },
+	knock_back = 2,
+})
+
+--Thanks to Tenplus1
+mobs:register_arrow("dmobs:fire", {
+   visual = "sprite",
+   visual_size = {x = 0.5, y = 0.5},
+   textures = {"dmobs_fire.png"},
+   velocity = 8,
+   tail = 1, -- enable tail
+   tail_texture = "fire_basic_flame.png",
+
+   hit_player = function(self, player)
+      player:punch(self.object, 1.0, {
+         full_punch_interval = 1.0,
+         damage_groups = {fleshy = 8},
+      }, nil)
+   end,
+   
+   hit_mob = function(self, player)
+      player:punch(self.object, 1.0, {
+         full_punch_interval = 1.0,
+         damage_groups = {fleshy = 8},
+      }, nil)
+   end,
+
+   hit_node = function(self, pos, node)
+      mobs:explosion(pos, 2, 1, 1)
+   end,
+})
+
+
+mobs:spawn_specific("dmobs:dragon", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+   
+mobs:register_egg("dmobs:dragon", "Dragon", "default_apple.png", 1)
+end
