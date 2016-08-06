@@ -342,64 +342,64 @@ mobs:register_spawn("dmobs:elephant", {"default:dirt_with_dry_grass","default:de
 
 mobs:register_egg("dmobs:elephant", "Elephant", "default_dry_grass.png", 1)
 
--- mobs:register_mob("dmobs:whale", {
-	-- type = "animal",
-	-- passive = false,
-	-- reach = 1,
-	-- damage = 2,
-	-- attack_type = "dogfight",
-	-- hp_min = 52,
-	-- hp_max = 82,
-	-- armor = 230,
-	-- collisionbox = {-0.9, -1.2, -0.9, 0.9, 0.9, 0.9},
-	-- visual = "mesh",
-	-- mesh = "whale.b3d",
-	-- textures = {
-		-- {"dmobs_whale.png"},
-	-- },
-	-- blood_texture = "mobs_blood.png",
-	-- visual_size = {x=2.5, y=2.5},
-	-- makes_footstep_sound = true,
-	-- walk_velocity = 0.5,
-	-- run_velocity = 1,
-	-- jump = false,	
-	-- stepheight = 1.5,
-	-- fall_damage = 0,
-	-- fall_speed = -6,
-	-- fly = true,
-	-- fly_in = "default:water_source",
-	-- water_damage = 0,
-	-- lava_damage = 2,
-	-- light_damage = 0,
-	-- follow = {"fishing:fish_cooked"},
-	-- view_range = 14,
-	-- drops = {
-		-- {name = "mobs:meat_raw", chance = 1, min = 1, max = 1},
-	-- },
-	-- animation = {
-		-- speed_normal = 5,
-		-- speed_run = 10,
-		-- walk_start = 2,
-		-- walk_end = 39,
-		-- stand_start = 2,
-		-- stand_end = 39,
-		-- run_start = 2,
-		-- run_end = 39,
+mobs:register_mob("dmobs:whale", {
+	type = "animal",
+	passive = false,
+	reach = 1,
+	damage = 2,
+	attack_type = "dogfight",
+	hp_min = 52,
+	hp_max = 82,
+	armor = 230,
+	collisionbox = {-0.9, -1.2, -0.9, 0.9, 0.9, 0.9},
+	visual = "mesh",
+	mesh = "whale.b3d",
+	textures = {
+		{"dmobs_whale.png"},
+	},
+	blood_texture = "mobs_blood.png",
+	visual_size = {x=2.5, y=2.5},
+	makes_footstep_sound = true,
+	walk_velocity = 0.5,
+	run_velocity = 1,
+	jump = false,	
+	stepheight = 1.5,
+	fall_damage = 0,
+	fall_speed = -6,
+	fly = true,
+	fly_in = "default:water_source",
+	water_damage = 0,
+	lava_damage = 2,
+	light_damage = 0,
+	follow = {"fishing:fish_cooked"},
+	view_range = 14,
+	drops = {
+		{name = "mobs:meat_raw", chance = 1, min = 1, max = 1},
+	},
+	animation = {
+		speed_normal = 5,
+		speed_run = 10,
+		walk_start = 2,
+		walk_end = 39,
+		stand_start = 2,
+		stand_end = 39,
+		run_start = 2,
+		run_end = 39,
 
-	-- },
-	-- on_rightclick = function(self, clicker)
+	},
+	on_rightclick = function(self, clicker)
 
-		-- if mobs:feed_tame(self, clicker, 8, true, true) then
-			-- return
-		-- end
+		if mobs:feed_tame(self, clicker, 8, true, true) then
+			return
+		end
 
-		-- mobs:capture_mob(self, clicker, 0, 5, 50, false, nil)
-	-- end,
--- })
+		mobs:capture_mob(self, clicker, 0, 5, 50, false, nil)
+	end,
+})
 
--- mobs:register_spawn("dmobs:whale", {"default:water_source"}, 20, 10, 15000, -20, 1000)
+mobs:register_spawn("dmobs:whale", {"default:water_source"}, 20, 10, 15000, -20, 1000)
 
--- mobs:register_egg("dmobs:whale", "Whale", "default_water_source.png", 1)
+mobs:register_egg("dmobs:whale", "Whale", "default_water_source.png", 1)
 
 mobs:register_mob("dmobs:orc", {
 	type = "monster",
@@ -444,12 +444,56 @@ mobs:register_mob("dmobs:orc", {
 	},
 })
 
+mobs:register_mob("dmobs:orc_redesign", {
+	type = "monster",
+	passive = false,
+	reach = 1,
+	damage = 2,
+	attack_type = "dogfight",
+	hp_min = 12,
+	hp_max = 22,
+	armor = 130,
+	collisionbox = {-0.4, -0, -0.4, 0.4, 2, 0.4},
+	visual = "mesh",
+	mesh = "orc_redesign.b3d",
+	textures = {
+		{"dmobs_orc_redesign.png"},
+	},
+	blood_texture = "mobs_blood.png",
+	visual_size = {x=1.5, y=1.5},
+	makes_footstep_sound = true,
+	drops = {
+		{name = "mobs:meat_raw", chance = 1, min = 1, max = 1},
+	},
+	walk_velocity = 1,
+	run_velocity = 2,
+	jump = true,
+	water_damage = 0,
+	lava_damage = 2,
+	light_damage = 0,
+	view_range = 14,
+	animation = {
+		speed_normal = 12,
+		speed_run = 20,
+		walk_start = 20,
+		walk_end = 40,
+		stand_start = 60,
+		stand_end = 80,
+		run_start = 20,
+		run_end = 40,
+		punch_start = 1,
+		punch_end = 15,
+
+	},
+})
+
 if not dragons == true then
 mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
 else
 mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 350, 2, 31000)
 end
 
+mobs:register_egg("dmobs:orc_redesign", "Orc (redesign)", "default_desert_sand.png", 1)
 mobs:register_egg("dmobs:orc", "Orc", "default_desert_sand.png", 1)
 
 mobs:register_mob("dmobs:ogre", {
