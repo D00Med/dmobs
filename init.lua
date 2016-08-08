@@ -376,6 +376,11 @@ mobs:register_mob("dmobs:whale", {
 	drops = {
 		{name = "mobs:meat_raw", chance = 1, min = 1, max = 1},
 	},
+	sounds = {
+      random = "whale_1",
+      death = "whale_1",
+      distance = 128,
+	},
 	animation = {
 		speed_normal = 5,
 		speed_run = 10,

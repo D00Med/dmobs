@@ -26,6 +26,7 @@ CC BY-SA 3.0 UNPORTED. Created by D00Med
 
 Roar.ogg - CC BY 3.0 Mike Koenig - http://soundbible.com/1165-Dinosaur-Roar.html
 Velociraptor.ogg - CC BY 3.0 snottyboi - http://soundbible.com/1373-Velociraptor-Call.html
+whale_1.ogg - CC0 Public Domain - https://en.wikipedia.org/wiki/File:Humpbackwhale2.ogg
 
 --License of lib_mount:
 -- Minetest mod: lib_mount
