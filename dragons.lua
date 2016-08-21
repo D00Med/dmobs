@@ -1173,10 +1173,10 @@ mobs:register_egg("dmobs:dragon2", "Wild Lightning Dragon", "default_mese_crysta
 mobs:register_egg("dmobs:dragon3", "Wild Poison Dragon", "dmobs_poison.png", 1)
 mobs:register_egg("dmobs:dragon4", "Wild Ice Dragon", "default_ice.png", 1)
 
-mobs:register_egg("dmobs:dragon_red", "Tame Fire Dragon", "default_apple.png", 1,true)
-mobs:register_egg("dmobs:dragon_black", "Tame Lightning Dragon", "default_mese_crystal.png", 1,true)
-mobs:register_egg("dmobs:dragon_green", "Tame Poison Dragon", "dmobs_poison.png", 1,true)
-mobs:register_egg("dmobs:dragon_blue", "Tame Ice Dragon", "default_ice.png", 1,true)
+mobs:register_egg("dmobs:dragon_red", "Tame Fire Dragon", "default_apple.png", 1)
+mobs:register_egg("dmobs:dragon_black", "Tame Lightning Dragon", "default_mese_crystal.png", 1)
+mobs:register_egg("dmobs:dragon_green", "Tame Poison Dragon", "dmobs_poison.png", 1)
+mobs:register_egg("dmobs:dragon_blue", "Tame Ice Dragon", "default_ice.png", 1)
 
 
 --other dragons
