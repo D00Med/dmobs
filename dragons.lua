@@ -1,6 +1,6 @@
 dmobs = {}
 
---thanks to diriel and blert2112
+--thanks to diriel, blert2112 and taikedz 
 
 local step_custom = function(self, dtime)
 	if self.driver then
