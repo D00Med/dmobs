@@ -756,8 +756,9 @@ minetest.register_node("dmobs:dragon_egg_fire", {
 		minetest.after(100, function(pos, dragon, pname)
 			minetest.remove_node(pos)
 			local ent = minetest.add_entity(pos, "dmobs:dragon_red")
+			minetest.sound_play("dmobs_chirrup",{pos=pos,max_hear_distance=20})
 			local obj = ent:get_luaentity()
-			self.object:set_properties({
+			ent:set_properties({
 				textures = {"dmobs_dragon_young.png"},
 				visual_size = {x=1, y=1},
 			})
@@ -785,6 +786,7 @@ minetest.register_node("dmobs:dragon_egg_lightning", {
 		if wield_item == "dmobs:dragon_gem_lightning" then
 		minetest.after(100, function(pos, dragon, pname)
 			minetest.remove_node(pos)
+			minetest.sound_play("dmobs_chirrup",{pos=pos,max_hear_distance=20})
 			local ent = minetest.add_entity(pos, "dmobs:dragon_black")
 			local obj = ent:get_luaentity()
 			ent:set_properties({
@@ -814,9 +816,10 @@ minetest.register_node("dmobs:dragon_egg_poison", {
 		if wield_item == "dmobs:dragon_gem_poison" then
 		minetest.after(100, function(pos, dragon, pname)
 			minetest.remove_node(pos)
+			minetest.sound_play("dmobs_chirrup",{pos=pos,max_hear_distance=20})
 			local ent = minetest.add_entity(pos, "dmobs:dragon_green")
 			local obj = ent:get_luaentity()
-			obj:set_properties({
+			ent:set_properties({
 				textures = {"dmobs_dragon_young.png"},
 				visual_size = {x=1, y=1},
 			})
@@ -843,9 +846,10 @@ minetest.register_node("dmobs:dragon_egg_ice", {
 		if wield_item == "dmobs:dragon_gem_ice" then
 		minetest.after(100, function(pos, dragon, pname)
 			minetest.remove_node(pos)
+			minetest.sound_play("dmobs_chirrup",{pos=pos,max_hear_distance=20})
 			local ent = minetest.add_entity(pos, "dmobs:dragon_blue")
 			local obj = ent:get_luaentity()
-			obj:set_properties({
+			ent:set_properties({
 				textures = {"dmobs_dragon_young.png"},
 				visual_size = {x=1, y=1},
 			})
@@ -1172,7 +1176,12 @@ mobs:register_egg("dmobs:dragon", "Wild Fire Dragon", "default_apple.png", 1)
 mobs:register_egg("dmobs:dragon2", "Wild Lightning Dragon", "default_mese_crystal.png", 1)
 mobs:register_egg("dmobs:dragon3", "Wild Poison Dragon", "dmobs_poison.png", 1)
 mobs:register_egg("dmobs:dragon4", "Wild Ice Dragon", "default_ice.png", 1)
-mobs:register_egg("dmobs:dragon_red", "Tame Fire Dragon", "dmobs_egg.png", 1)
+
+mobs:register_egg("dmobs:dragon_red", "Tame Fire Dragon", "default_apple.png", 1)
+mobs:register_egg("dmobs:dragon_black", "Tame Lightning Dragon", "default_mese_crystal.png", 1)
+mobs:register_egg("dmobs:dragon_green", "Tame Poison Dragon", "dmobs_poison.png", 1)
+mobs:register_egg("dmobs:dragon_blue", "Tame Ice Dragon", "default_ice.png", 1)
+
 
 --other dragons
 
