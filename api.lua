@@ -242,7 +242,7 @@ function lib_mount.attach(entity, player, attach_at, eye_offset)
 end
 
 function lib_mount.detach(entity, player, offset)
-	entity.driver = nil
+	if entity ~= nil then entity.driver = nil end
 	player:set_detach()
 	default.player_attached[player:get_player_name()] = false
 	default.player_set_animation(player, "stand" , 30)
