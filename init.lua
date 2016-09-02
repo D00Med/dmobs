@@ -8,6 +8,8 @@ dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 --enable dragons(disable to remove tamed dragons and dragon bosses)
 local dragons = true
+--enable fireballs/explosions(needs to be set in dragons.lua as well)
+local destructive = true 
 
 mobs:register_mob("dmobs:panda", {
 	type = "animal",
@@ -71,6 +73,7 @@ mobs:register_spawn("dmobs:panda", {"default:dirt_with_grass","ethereal:bamboo_d
 
 mobs:register_egg("dmobs:panda", "Panda", "default_papyrus.png", 1)
 
+if destructive then
 mobs:register_mob("dmobs:pig_evil", {
 	type = "monster",
 	passive = true,
@@ -141,6 +144,7 @@ mobs:register_mob("dmobs:pig_evil", {
 mobs:register_spawn("dmobs:pig_evil", {"default:pine_needles","default:leaves"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:pig_evil", "kamikaze Pig", "wool_pink.png", 1)
+end
 
 mobs:register_mob("dmobs:pig", {
 	type = "animal",
@@ -212,6 +216,85 @@ mobs:register_mob("dmobs:pig", {
 mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:pig", "flying Pig", "wool_pink.png", 1)
+
+mobs:register_mob("dmobs:nyan", {
+	type = "animal",
+	passive = true,
+	reach = 4,
+	damage = 2,
+	hp_min = 12,
+	hp_max = 22,
+	armor = 130,
+	collisionbox = {-0.2, 0, -0.2, 0.2, 0.6, 0.2},
+	visual = "mesh",
+	mesh = "nyancat.b3d",
+	textures = {
+		{"dmobs_nyancat.png"},
+	},
+   jump = true,
+   fly = true,
+   fall_speed = 0,
+   stepheight = 1.5,
+	blood_texture = "mobs_blood.png",
+	visual_size = {x=1, y=1},
+	makes_footstep_sound = true,
+	runaway = false,
+	walk_velocity = 2,
+	run_velocity = 3,
+	run_chance = 20,
+	jump = true,
+	drops = {
+		{name = "default:nyan_cat", chance = 2, min = 1, max = 1},
+	},
+	water_damage = 0,
+	lava_damage = 2,
+	light_damage = 0,
+	follow = {"default:mese"},
+	view_range = 14,
+	animation = {
+		speed_normal = 4,
+		speed_run = 5,
+		walk_start = 1,
+		walk_end = 7,
+		stand_start = 1,
+		stand_end = 7,
+		run_start = 1,
+		run_end = 7,
+
+	},
+   do_custom = function(self)
+   local apos = self.object:getpos()
+		local vec = self.object:getvelocity()
+		local part = minetest.add_particlespawner(
+			5, --amount
+			0.3, --time
+			{x=apos.x-0.1, y=apos.y+0.3, z=apos.z-0.1}, --minpos
+			{x=apos.x+0.1, y=apos.y+0.4, z=apos.z+0.1}, --maxpos
+			{x=-0, y=-0, z=-0}, --minvel
+			{x=0, y=0, z=0}, --maxvel
+			{x=0,y=0,z=0}, --minacc
+			{x=-vec.x,y=0,z=-vec.z}, --maxacc
+			0.5, --minexptime
+			1.5, --maxexptime
+			3, --minsize
+			5, --maxsize
+			false, --collisiondetection
+			"dmobs_rainbow.png" --texture
+		)
+   end,
+	on_rightclick = function(self, clicker)
+
+		if mobs:feed_tame(self, clicker, 8, true, true) then
+			return
+		end
+
+		mobs:capture_mob(self, clicker, 0, 5, 50, false, nil)
+	end,
+})
+
+mobs:register_spawn("dmobs:nyan", {"default:pine_needles","default:leaves"}, 20, 10, 50000, 2, 31000)
+
+mobs:register_egg("dmobs:nyan", "Nyan Cat", "wool_pink.png", 1)
 
 mobs:register_mob("dmobs:gnorm", {
 	type = "npc",
@@ -849,6 +932,7 @@ mobs:register_mob("dmobs:dragon", {
 })
 
 --Thanks to Tenplus1
+if destructive == true then
 mobs:register_arrow("dmobs:fire", {
    visual = "sprite",
    visual_size = {x = 0.5, y = 0.5},
@@ -875,6 +959,34 @@ mobs:register_arrow("dmobs:fire", {
       mobs:explosion(pos, 2, 1, 1)
    end,
 })
+else
+mobs:register_arrow("dmobs:fire", {
+   visual = "sprite",
+   visual_size = {x = 0.5, y = 0.5},
+   textures = {"dmobs_fire.png"},
+   velocity = 8,
+   tail = 1, -- enable tail
+   tail_texture = "fire_basic_flame.png",
+
+   hit_player = function(self, player)
+      player:punch(self.object, 1.0, {
+         full_punch_interval = 1.0,
+         damage_groups = {fleshy = 8},
+      }, nil)
+   end,
+   
+   hit_mob = function(self, player)
+      player:punch(self.object, 1.0, {
+         full_punch_interval = 1.0,
+         damage_groups = {fleshy = 8},
+      }, nil)
+   end,
+
+   hit_node = function(self, pos, node)
+      self.object:remove()
+   end,
+})
+end
 
 
 mobs:spawn_specific("dmobs:dragon", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)

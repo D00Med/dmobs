@@ -12,6 +12,19 @@ end
 
 local tamed_dragons = {}
 
+local node_hit = {}
+
+local destructive = true
+
+if destructive == true then
+node_hit = function(self, pos, node)
+mobs:explosion(pos, 2, 1, 1)
+end
+else
+node_hit = function(self)
+self.object:remove()
+end
+end
 
 local on_rc = function(self, clicker)
 	if not clicker or not clicker:is_player() then
@@ -956,9 +969,7 @@ mobs:register_arrow("dmobs:fire", {
       }, nil)
    end,
 
-   hit_node = function(self, pos, node)
-      mobs:explosion(pos, 2, 1, 1)
-   end,
+   hit_node = node_hit,
 })
 
 --function to register tamed dragon attacks
@@ -1103,9 +1114,7 @@ mobs:register_arrow("dmobs:lightning", {
       }, nil)
    end,
 
-   hit_node = function(self, pos, node)
-      mobs:explosion(pos, 2, 1, 1)
-   end,
+   hit_node = node_hit,
 })
 
 mobs:register_arrow("dmobs:poison", {
