@@ -2,9 +2,11 @@ dmobs = {}
 
 -- dmobs by D00Med
 
--- mounts api by blert2112
+-- mounts api by D00Med and lib_mount api by blert2112
 
 dofile(minetest.get_modpath("dmobs").."/api.lua")
+
+--peaceful mobs setting
 
 if not minetest.setting_getbool("only_peaceful_mobs") then
 	dofile(minetest.get_modpath("dmobs").."/baddies.lua")
@@ -12,6 +14,8 @@ end
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
 dmobs.dragons = true
+
+--friendly mobs
 
 mobs:register_mob("dmobs:panda", {
 	type = "animal",
