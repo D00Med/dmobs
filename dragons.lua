@@ -1,5 +1,3 @@
-dmobs = {}
-
 --thanks to diriel, blert2112 and taikedz 
 
 local step_custom = function(self, dtime)
@@ -14,9 +12,9 @@ local tamed_dragons = {}
 
 local node_hit = {}
 
-local destructive = true
+dmobs.destructive = true
 
-if destructive == true then
+if dmobs.destructive == true then
 node_hit = function(self, pos, node)
 mobs:explosion(pos, 2, 1, 1)
 end

@@ -1,8 +1,5 @@
--- Enable fireballs/explosions
-dmobs.destructive = true 
-
 -- Fox
-if destructive then
+if dmobs.destructive then
 mobs:register_mob("dmobs:pig_evil", {
 	type = "monster",
 	passive = true,
@@ -232,7 +229,7 @@ mobs:register_mob("dmobs:orc_redesign", {
 	},
 })
 
-if not dragons == true then
+if not dmobs.dragons == true then
 mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
 else
 mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 350, 2, 31000)
@@ -289,7 +286,7 @@ mobs:register_mob("dmobs:ogre", {
 	},
 })
 
-if not dragons == true then
+if not dmobs.dragons == true then
 mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
 else
 mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 350, 2, 31000)
@@ -367,7 +364,7 @@ else
 	})
 
 	--Thanks to Tenplus1
-	if destructive == true then
+	if dmobs.destructive == true then
 	mobs:register_arrow("dmobs:fire", {
 	   visual = "sprite",
 	   visual_size = {x = 0.5, y = 0.5},
