@@ -3,6 +3,9 @@
 local step_custom = function(self, dtime)
 	if self.driver then
 		lib_mount.drive(self, dtime, "walk", "stand", true)
+		if self.state == "attack" then
+			self.state = nil
+		end
 		return false
 	end
 	return true
