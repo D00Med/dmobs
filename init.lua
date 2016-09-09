@@ -149,7 +149,7 @@ mobs:register_mob("dmobs:pig", {
 	end,
 })
 
-mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves"}, 20, 10, 15000, 2, 31000)
+mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves", "nyanland:cloudstone"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:pig", "flying Pig", "wool_pink.png", 1)
 
@@ -228,7 +228,7 @@ mobs:register_mob("dmobs:nyan", {
 	end,
 })
 
-mobs:register_spawn("dmobs:nyan", {"default:pine_needles","default:leaves"}, 20, 10, 50000, 2, 31000)
+mobs:register_spawn("dmobs:nyan", {"default:pine_needles","default:leaves", "nyanland:meseleaves"}, 20, 10, 50000, 2, 31000)
 
 mobs:register_egg("dmobs:nyan", "Nyan Cat", "wool_pink.png", 1)
 
