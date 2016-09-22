@@ -14,9 +14,7 @@ dmobs.destructive = true
 
 --peaceful mobs setting
 
-if not minetest.setting_getbool("only_peaceful_mobs") then
-	dofile(minetest.get_modpath("dmobs").."/baddies.lua")
-end
+dofile(minetest.get_modpath("dmobs").."/baddies.lua")
 
 --friendly mobs
 
