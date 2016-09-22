@@ -12,7 +12,7 @@ dmobs.dragons = true
 -- Enable fireballs/explosions
 dmobs.destructive = true
 
---peaceful mobs setting
+-- load baddies
 
 dofile(minetest.get_modpath("dmobs").."/baddies.lua")
 
