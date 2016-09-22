@@ -65,7 +65,7 @@ local pigdef = {
 }
 
 if dmobs.destructive then
-	pigdef.sounds.explode = "mobs_pig"
+	pigdef.sounds.explode = "tnt_explode"
 	pigdef.attack_type = "explode"
 end
 
