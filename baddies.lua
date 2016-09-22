@@ -14,10 +14,10 @@ local pigdef = {
 	textures = {
 		{"dmobs_flying_pig_mean.png"},
 	},
-   jump = true,
-   fly = true,
-   fall_speed = 0,
-   stepheight = 1.5,
+	jump = true,
+	fly = true,
+	fall_speed = 0,
+	stepheight = 1.5,
 	blood_texture = "mobs_blood.png",
 	visual_size = {x=1, y=1},
 	makes_footstep_sound = true,
@@ -29,7 +29,7 @@ local pigdef = {
 	drops = {
 		{name = "mobs:meat_raw", chance = 2, min = 1, max = 1},
 	},
-	pigdef.sounds = {
+	sounds = {
 		random = "mobs_pig",
 	},
 	do_custom = function(self)
@@ -66,7 +66,7 @@ local pigdef = {
 
 if dmobs.destructive then
 	pigdef.sounds.explode = "mobs_pig"
-	pigdef.attack_type = "explode",
+	pigdef.attack_type = "explode"
 end
 
 mobs:register_mob("dmobs:pig_evil", pigdef)
