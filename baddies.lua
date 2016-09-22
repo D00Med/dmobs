@@ -1,11 +1,9 @@
--- Fox
-if dmobs.destructive then
-mobs:register_mob("dmobs:pig_evil", {
+local pigdef = {
 	type = "monster",
 	passive = true,
 	reach = 3,
 	damage = 2,
-	attack_type = "explode",
+	attack_type = "dogfight",
 	explosion_radius = 2,
 	hp_min = 12,
 	hp_max = 22,
@@ -31,9 +29,8 @@ mobs:register_mob("dmobs:pig_evil", {
 	drops = {
 		{name = "mobs:meat_raw", chance = 2, min = 1, max = 1},
 	},
-	sounds = {
-      random = "mobs_pig",
-	  explode = "tnt_explode",
+	pigdef.sounds = {
+		random = "mobs_pig",
 	},
 	do_custom = function(self)
 		if self.state == "attack" then
@@ -65,12 +62,18 @@ mobs:register_mob("dmobs:pig_evil", {
 
 		mobs:capture_mob(self, clicker, 0, 5, 50, false, nil)
 	end,
-})
+}
+
+if dmobs.destructive then
+	pigdef.sounds.explode = "mobs_pig"
+	pigdef.attack_type = "explode",
+end
+
+mobs:register_mob("dmobs:pig_evil", pigdef)
 
 mobs:register_spawn("dmobs:pig_evil", {"default:pine_needles","default:leaves"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:pig_evil", "kamikaze Pig", "wool_pink.png", 1)
-end
 
 -- Fox
 mobs:register_mob("dmobs:fox", {
