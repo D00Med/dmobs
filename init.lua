@@ -10,7 +10,7 @@ dofile(minetest.get_modpath("dmobs").."/api.lua")
 dmobs.dragons = true
 
 -- Enable fireballs/explosions
-dmobs.destructive = true
+dmobs.destructive = false
 
 --peaceful mobs setting
 
@@ -149,7 +149,7 @@ mobs:register_mob("dmobs:pig", {
 	end,
 })
 
-mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves", "nyanland:cloudstone"}, 20, 10, 15000, 2, 31000)
+mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves", "nyanland:cloudstone"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:pig", "flying Pig", "wool_pink.png", 1)
 
@@ -290,7 +290,7 @@ mobs:register_mob("dmobs:gnorm", {
 	end,
 })
 
-mobs:register_spawn("dmobs:gnorm", {"default:dirt_with_grass","default:wood"}, 20, 10, 15000, 2, 31000)
+mobs:register_spawn("dmobs:gnorm", {"default:dirt_with_grass","default:wood"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:gnorm", "Gnorm", "default_dirt.png", 1)
 

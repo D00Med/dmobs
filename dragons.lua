@@ -15,7 +15,7 @@ local tamed_dragons = {}
 
 local node_hit = {}
 
-dmobs.destructive = true
+dmobs.destructive = false
 
 if dmobs.destructive == true then
 node_hit = function(self, pos, node)
@@ -1177,10 +1177,15 @@ minetest.register_craftitem("dmobs:dragon_gem", {
 
 --spawns and eggs
 
-mobs:spawn_specific("dmobs:dragon", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
-mobs:spawn_specific("dmobs:dragon2", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
-mobs:spawn_specific("dmobs:dragon3", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
-mobs:spawn_specific("dmobs:dragon4", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+-- mobs:spawn_specific("dmobs:dragon", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+-- mobs:spawn_specific("dmobs:dragon2", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+-- mobs:spawn_specific("dmobs:dragon3", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+-- mobs:spawn_specific("dmobs:dragon4", {"air"}, {"default:stone"}, 20, 10, 300, 15000, 2, -100, 11000)
+
+mobs:register_spawn("dmobs:dragon", {"default:leaves","default:dirt_with_grass"}, 20, 10, 64000, 2, 31000)
+mobs:register_spawn("dmobs:dragon2", {"default:pine_needles"}, 20, 10, 64000, 2, 31000)
+mobs:register_spawn("dmobs:dragon3", {"default:acacia_leaves","default:dirt_with_dry_grass"}, 20, 10, 64000, 2, 31000)
+mobs:register_spawn("dmobs:dragon4", {"default:jungleleaves"}, 20, 10, 64000, 2, 31000)
    
 mobs:register_egg("dmobs:dragon", "Wild Fire Dragon", "default_apple.png", 1)
 mobs:register_egg("dmobs:dragon2", "Wild Lightning Dragon", "default_mese_crystal.png", 1)
@@ -1326,8 +1331,7 @@ mobs:register_mob("dmobs:waterdragon_2", {
 	},
 })
 
-mobs:register_spawn("dmobs:waterdragon",
-	{"default:water_source"}, 20, 10, 7000, 1, 31000, false)
+mobs:register_spawn("dmobs:waterdragon", {"default:water_source"}, 20, 10, 64000, 1, 31000, false)
 
 mobs:register_egg("dmobs:waterdragon", "Boss Waterdragon", "dmobs_egg4.png", 1)
 
@@ -1392,8 +1396,7 @@ mobs:register_mob("dmobs:wyvern", {
 	knock_back = 2,
 })
 
-mobs:register_spawn("dmobs:wyvern",
-	{"default:leaves"}, 20, 10, 7000, 1, 31000, false)
+mobs:register_spawn("dmobs:wyvern",	{"default:leaves"}, 20, 10, 64000, 1, 31000, false)
 
 mobs:register_egg("dmobs:wyvern", "Boss Wyvern", "dmobs_egg3.png", 1)
 
@@ -1548,7 +1551,6 @@ mobs:register_mob("dmobs:dragon_great_tame", {
 	end,
 })
 
-mobs:register_spawn("dmobs:dragon_great",
-	{"default:lava_source"}, 20, 0, 7000, -21000, 1000, false)
+mobs:register_spawn("dmobs:dragon_great", {"default:lava_source"}, 20, 0, 128000, -21000, 1000, false)
 
 mobs:register_egg("dmobs:dragon_great", "Boss Dragon", "dmobs_egg1.png", 1)
