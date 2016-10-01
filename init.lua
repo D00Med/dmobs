@@ -12,11 +12,9 @@ dmobs.dragons = true
 -- Enable fireballs/explosions
 dmobs.destructive = false
 
---peaceful mobs setting
+-- load baddies
 
-if not minetest.setting_getbool("only_peaceful_mobs") then
-	dofile(minetest.get_modpath("dmobs").."/baddies.lua")
-end
+dofile(minetest.get_modpath("dmobs").."/baddies.lua")
 
 --friendly mobs
 
