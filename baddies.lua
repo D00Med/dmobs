@@ -212,7 +212,7 @@ mobs:register_mob("dmobs:golem", {
 	run_velocity = 2.5,
 	jump = true,
 	drops = {
-		{name = "default:stone", chance = 5, min = 3, max = 6},
+		{name = "dmobs:golemstone", chance = 30, min = 1, max = 1},
 	},
 	water_damage = 0,
 	lava_damage = 2,
