@@ -102,6 +102,11 @@ mobs:register_mob("dmobs:fox", {
 	drops = {
 		{name = "mobs:meat_raw", chance = 1, min = 1, max = 1},
 	},
+	on_activate = function(self)
+		if math.random(1,5) == 1 then
+		self.type = "animal"
+		end
+	end,
 	water_damage = 0,
 	lava_damage = 2,
 	light_damage = 0,
@@ -137,6 +142,120 @@ mobs:register_mob("dmobs:fox", {
 mobs:register_spawn("dmobs:fox", {"default:dirt_with_grass","default:dirt"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:fox", "Fox", "wool_orange.png", 1)
+
+--Wasps!
+mobs:register_mob("dmobs:wasp", {
+	type = "monster",
+	reach = 1,
+	damage = 2,
+	attack_type = "dogfight",
+	hp_min = 2,
+	hp_max = 5,
+	armor = 100,
+	collisionbox = {-0.1, -0, -0.1, 0.1, 0.5, 0.1},
+	fly = true,
+	fall_speed = 0,
+	stepheight = 1.5,
+	visual = "mesh",
+	mesh = "wasp.b3d",
+	textures = {
+		{"dmobs_wasp.png"},
+	},
+	sounds = {
+		random = "wasp",
+	},
+	blood_texture = "mobs_blood.png",
+	visual_size = {x=0.6, y=0.6},
+	makes_footstep_sound = true,
+	walk_velocity = 2,
+	run_velocity = 3,
+	jump = true,
+	water_damage = 2,
+	lava_damage = 2,
+	light_damage = 0,
+	view_range = 14,
+	animation = {
+		speed_normal = 15,
+		speed_run = 30,
+		walk_start = 1,
+		walk_end = 6,
+		stand_start = 1,
+		stand_end = 6,
+		run_start = 1,
+		run_end = 6,
+		punch_start = 6,
+		punch_end = 15,
+	},
+})
+
+mobs:register_spawn("dmobs:wasp", {"default:dirt_with_grass"}, 20, 10, 32000, 2, 31000)
+mobs:register_spawn("dmobs:wasp", {"dmobs:hive"}, 20, 10, 16000, 2, 31000)
+
+mobs:register_egg("dmobs:wasp", "Wasp", "dmobs_wasp_bg.png", 1)
+
+mobs:register_mob("dmobs:wasp_leader", {
+	type = "monster",
+	reach = 1,
+	damage = 2,
+	attack_type = "shoot",
+	shoot_interval = 1,
+	arrow = "dmobs:sting",
+	shoot_offset = 0,
+	hp_min = 82,
+	hp_max = 122,
+	armor = 130,
+	collisionbox = {-0.4, -0, -0.4, 0.3, 2, 0.3},
+	pathfinding = true,
+	fly = true,
+	fall_speed = 0,
+	stepheight = 1.5,
+	visual = "mesh",
+	mesh = "wasp.b3d",
+	textures = {
+		{"dmobs_wasp.png"},
+	},
+	sounds = {
+		random = "wasp",
+	},
+	blood_texture = "mobs_blood.png",
+	visual_size = {x=3.5, y=3.5},
+	makes_footstep_sound = true,
+	walk_velocity = 1,
+	run_velocity = 2.5,
+	jump = true,
+	drops = {
+		{name = "default:gold_lump", chance = 1, min = 3, max = 5},
+	},
+	do_custom = function(self)
+	if math.random(1, 500) >= 500 then
+	local pos = self.object:getpos()
+	minetest.env:add_entity(pos, "dmobs:wasp")
+	end
+	end,
+	replace_rate = 700,
+	replace_what = {"air"},
+	replace_with = "dmobs:hive",
+	water_damage = 2,
+	lava_damage = 2,
+	light_damage = 0,
+	view_range = 14,
+	animation = {
+		speed_normal = 6,
+		speed_run = 15,
+		walk_start = 1,
+		walk_end = 6,
+		stand_start = 1,
+		stand_end = 6,
+		run_start = 1,
+		run_end = 6,
+		shoot_start = 6,
+		shoot_end = 15,
+	},
+})
+
+mobs:register_spawn("dmobs:wasp_leader", {"default:dirt_with_grass","dmobs:hive"}, 20, 10, 64000, 2, 31000)
+
+mobs:register_egg("dmobs:wasp_leader", "King of Sting", "dmobs_wasp_bg.png", 1)
 
 -- Treeman
 
@@ -184,7 +303,7 @@ mobs:register_mob("dmobs:treeman", {
 	},
 })
 
-mobs:register_spawn("dmobs:treeman", {"default:leaves"}, 7, 0, 16000, 2, 31000)
+mobs:register_spawn("dmobs:treeman", {"default:leaves", "default:pine_needles"}, 7, 0, 16000, 2, 31000)
 
 mobs:register_egg("dmobs:treeman", "Treeman", "default_tree.png", 1)
 
@@ -446,6 +565,29 @@ mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass",
 end
 
 mobs:register_egg("dmobs:ogre", "Ogre", "default_desert_sand.png", 1)
+
+mobs:register_arrow("dmobs:sting", {
+	   visual = "sprite",
+	   visual_size = {x = 0.5, y = 0.5},
+	   textures = {"dmobs_sting.png"},
+	   velocity = 8,
+	   tail = 0, -- enable tail
+	   tail_texture = "fire_basic_flame.png",
+
+	   hit_player = function(self, player)
+	      player:punch(self.object, 1.0, {
+		 full_punch_interval = 1.0,
+		 damage_groups = {fleshy = 1},
+	      }, nil)
+	   end,
+	   
+	   hit_mob = function(self, player)
+	   end,
+
+	   hit_node = function(self, pos, node)
+	      self.object:remove()
+	   end,
+	})
 
 --dragon
 if dmobs.dragons == true then

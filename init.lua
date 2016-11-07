@@ -16,6 +16,20 @@ dmobs.destructive = false
 
 dofile(minetest.get_modpath("dmobs").."/baddies.lua")
 
+--wasps nest
+
+minetest.register_node("dmobs:hive", {
+	description = "Wasp Hive",
+	tiles = {"dmobs_hive.png"},
+	groups = {crumbly=1, oddly_breakable_by_hand=1, falling_node=1},
+	on_destruct = function(pos, oldnode)
+		minetest.env:add_entity(pos, "dmobs:wasp")
+		minetest.env:add_entity(pos, "dmobs:wasp")
+		minetest.env:add_entity(pos, "dmobs:wasp")
+		minetest.env:add_entity(pos, "dmobs:wasp")
+	end,
+})
+
 --golem
 
 minetest.register_node("dmobs:golemstone", {

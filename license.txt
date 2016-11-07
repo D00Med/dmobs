@@ -29,6 +29,7 @@ Velociraptor.ogg - CC BY 3.0 snottyboi - http://soundbible.com/1373-Velociraptor
 whale_1.ogg - CC0 Public Domain - https://en.wikipedia.org/wiki/File:Humpbackwhale2.ogg
 mobs_pig.ogg - from mobs_animal by TenPlus1 (MIT)
 dmobs_chirrup.ogg - CC BY SA 3.0 taikedz
+wasp.ogg - Public Domain
 
 --License of lib_mount:
 -- Minetest mod: lib_mount
