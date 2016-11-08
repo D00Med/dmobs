@@ -157,6 +157,7 @@ mobs:register_mob("dmobs:panda", {
 	fall_damage = 1,
 	fall_speed = -10,
 	fear_height = 4,
+	jump_height = 2,
 	replace_rate = 10,
 	replace_what = {"default:grass_3", "default:grass_4", "default:grass_5", "ethereal:bamboo"},
 	replace_with = "air",
@@ -209,8 +210,9 @@ mobs:register_mob("dmobs:tortoise", {
 	makes_footstep_sound = true,
 	walk_velocity = 0.5,
 	run_velocity = 1,
-	jump = true,
-	float = true,
+	jump = false,
+	jump_height = 0.5,
+	floats = true,
 	drops = {
 		{name = "default:stick", chance = 1, min = 1, max = 1},
 	},
@@ -239,7 +241,7 @@ mobs:register_mob("dmobs:tortoise", {
 			return
 		end
 
-		mobs:capture_mob(self, clicker, 0, 5, 50, false, nil)
+		mobs:capture_mob(self, clicker, 30, 50, 80, false, nil)
 	end,
 })
 
