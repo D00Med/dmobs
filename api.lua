@@ -160,9 +160,13 @@ function object_fly(entity, dtime, speed, shoots, arrow, moving_anim, stand_anim
 	local vec_forward = {x=dir.x*speed,y=dir.y*speed+2,z=dir.z*speed}
 	local vec_backward = {x=-dir.x*speed,y=dir.y*speed+2,z=-dir.z*speed}
 	local vec_rise = {x=velo.x,y=velo.y+0.2,z=velo.z}
-	local vec_stop = {x=0,y=-2,z=0}
+	local vec_stop = {x=0,y=-0.2,z=0}
 	local yaw = entity.driver:get_look_yaw();
-	if ctrl.up then
+	local pos = entity.object:getpos()
+	local node = minetest.get_node(pos).name
+	if node == "default:water_source" or node == "default:river_water_source" or node == "default:river_water_flowing" or node == "default:water_flowing" then
+		entity.object:setvelocity({x=velo.x*0.9, y=-1, z=velo.z*0.9})
+	elseif ctrl.up then
 		entity.object:setyaw(yaw+math.pi+math.pi/2)
 		entity.object:setvelocity(vec_forward)
 	elseif ctrl.down then
@@ -175,13 +179,19 @@ function object_fly(entity, dtime, speed, shoots, arrow, moving_anim, stand_anim
 		entity.object:setyaw(yaw+math.pi+math.pi/2)
 		entity.object:setvelocity(vec_stop)
 	end
-	if ctrl.LMB and ctrl.sneak and shoots then
+	if ctrl.aux1 and shoots and not entity.loaded then
 			local pos = entity.object:getpos()
 			local obj = minetest.env:add_entity({x=pos.x+0+dir.x*2.5,y=pos.y+1.5+dir.y,z=pos.z+0+dir.z*2.5}, arrow)
-			local vec = {x=dir.x*6,y=dir.y*6,z=dir.z*6}
+			local vec = {x=dir.x*12,y=dir.y*12,z=dir.z*12}
 			local yaw = entity.driver:get_look_yaw();
+			entity.loaded = true
 			obj:setyaw(yaw+math.pi/2)
 			obj:setvelocity(vec)
+			local object = obj:get_luaentity()
+			object.launcher = entity.driver
+			minetest.after(1, function()
+			entity.loaded = false
+			end)
 	end
 	--lib_mount animation
 	if velo.x == 0 and velo.y == 0 and velo.z == 0 then

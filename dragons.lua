@@ -36,18 +36,6 @@ local on_rc = function(self, clicker)
 	end
 	if self.tamed and self.owner == clicker:get_player_name() then
 		local inv = clicker:get_inventory()
-		if clicker:get_wielded_item():get_name() == "dmobs:dragon_armor_steel" then
-				self.armor = true
-				inv:remove_item("main", "dmobs:dragon_gem_fire")
-			end
-		if self.armor == true then 
-			self.armor = false
-			if inv:room_for_item("main", "dmobs:dragon_armor_steel") then
-				inv:add_item("main", "dmobs:dragon_armor_steel")
-			else
-				minetest.add_item(clicker.getpos(), "dmobs:dragon_armor_steel")
-			end
-		end
 		if self.driver and clicker == self.driver then
 			-- detach
 			lib_mount.detach(self, clicker, {x=1, y=0, z=1})
@@ -176,6 +164,7 @@ mobs:register_mob("dmobs:dragon2", {
    fly = true,
    drops = {
       {name = "dmobs:egg", chance = 1, min = 1, max = 1},
+      {name = "dmobs:dragon_gem", chance = 1, min = 1, max = 1},
    },
    fall_speed = 0,
    stepheight = 10,
@@ -241,6 +230,7 @@ mobs:register_mob("dmobs:dragon3", {
    fly = true,
    drops = {
       {name = "dmobs:egg", chance = 1, min = 1, max = 1},
+      {name = "dmobs:dragon_gem", chance = 1, min = 1, max = 1},
    },
    fall_speed = 0,
    stepheight = 10,
@@ -306,6 +296,7 @@ mobs:register_mob("dmobs:dragon4", {
    fly = true,
    drops = {
       {name = "dmobs:egg", chance = 1, min = 1, max = 1},
+      {name = "dmobs:dragon_gem", chance = 1, min = 1, max = 1},
    },
    fall_speed = 0,
    stepheight = 10,
@@ -416,6 +407,9 @@ mobs:register_mob("dmobs:dragon_red", {
 	do_custom = function(self, dtime)
 	if self.driver then
 		object_fly(self, dtime, 10, true, "dmobs:fire_plyr", "walk", "stand")
+		if self.state == "attack" then
+		self.state = "idle"
+		end
 		return false
 		end
 		return true
@@ -507,6 +501,9 @@ mobs:register_mob("dmobs:dragon_black", {
 	do_custom = function(self, dtime)
 	if self.driver then
 		object_fly(self, dtime, 15, true, "dmobs:lightning_plyr", "walk", "stand")
+		if self.state == "attack" then
+		self.state = "idle"
+		end
 		return false
 		end
 		return true
@@ -598,6 +595,9 @@ mobs:register_mob("dmobs:dragon_green", {
 	do_custom = function(self, dtime)
 	if self.driver then
 		object_fly(self, dtime, 10, true, "dmobs:poison_plyr", "walk", "stand")
+		if self.state == "attack" then
+		self.state = "idle"
+		end
 		return false
 		end
 		return true
@@ -689,6 +689,9 @@ mobs:register_mob("dmobs:dragon_blue", {
 	do_custom = function(self, dtime)
 	if self.driver then
 		object_fly(self, dtime, 10, true, "dmobs:ice_plyr", "walk", "stand")
+		if self.state == "attack" then
+		self.state = "idle"
+		end
 		return false
 		end
 		return true
@@ -975,7 +978,7 @@ mobs:register_arrow("dmobs:fire", {
 
 --function to register tamed dragon attacks
 
-function dmobs.register_fire(fname, texture, dmg, replace_node, explode)
+function dmobs.register_fire(fname, texture, dmg, replace_node, explode, ice, variance, size)
 minetest.register_entity(fname, {
 	textures = {texture},
 	velocity = 0.1,
@@ -990,7 +993,7 @@ minetest.register_entity(fname, {
 			for k, obj in pairs(objs) do
 				if obj:get_luaentity() ~= nil then
 					if obj:get_luaentity().name ~= fname and obj:get_luaentity().name ~= "dmobs:dragon_red" and obj:get_luaentity().name ~= "dmobs:dragon_blue" and obj:get_luaentity().name ~= "dmobs:dragon_black" and obj:get_luaentity().name ~= "dmobs:dragon_green" and obj:get_luaentity().name ~= "dmobs:dragon_great_tame" and obj:get_luaentity().name ~= "__builtin:item" then
-						obj:punch(self.object, 1.0, {
+						obj:punch(self.launcher, 1.0, {
 							full_punch_interval=1.0,
 							damage_groups={fleshy=3},
 						}, nil)
@@ -1010,47 +1013,28 @@ minetest.register_entity(fname, {
 									self.object:remove()
 									return
 									end
+									if ice and n == "default:water_source" then
+									minetest.env:set_node(t, {name="default:ice"})
+									self.object:remove()
+									end
 								end
 							end
 						end
 					end
-			hit_node = function(self, pos, node)
-			if explode then
-				local pos = self.object:getpos()
-				tnt.boom(pos, {damage_radius=5,radius=5,ignore_protection=false})
-	else
---	local pos = self.object:getpos()
-		for dx=-4,4 do
-			for dy=-4,4 do
-				for dz=-4,4 do
-					local p = {x=pos.x+dx, y=pos.y+dy, z=pos.z+dz}
-					local t = {x=pos.x+dx, y=pos.y+dy, z=pos.z+dz}
-					local n = minetest.env:get_node(pos).name
-					if math.random(1, 50) <= 35 then
-						minetest.env:remove_node(p)
-					end
-					if minetest.registered_nodes[n].groups.flammable or math.random(1, 100) <=5 then
-										minetest.env:set_node(t, {name=replace_node})
-					end
-				end
-			end
-		end
-		end
-		end
 		local apos = self.object:getpos()
 		local part = minetest.add_particlespawner(
 			6, --amount
 			0.3, --time
-			{x=apos.x-0.3, y=apos.y-0.3, z=apos.z-0.3}, --minpos
-			{x=apos.x+0.3, y=apos.y+0.3, z=apos.z+0.3}, --maxpos
+			{x=apos.x-variance, y=apos.y-variance, z=apos.z-variance}, --minpos
+			{x=apos.x+variance, y=apos.y+variance, z=apos.z+variance}, --maxpos
 			{x=-0, y=-0, z=-0}, --minvel
 			{x=0, y=0, z=0}, --maxvel
-			{x=0,y=-0.5,z=0}, --minacc
-			{x=0.5,y=0.5,z=0.5}, --maxacc
+			{x=variance,y=-0.5-variance,z=variance}, --minacc
+			{x=0.5+variance,y=0.5+variance,z=0.5+variance}, --maxacc
 			0.1, --minexptime
 			0.3, --maxexptime
-			1, --minsize
-			2, --maxsize
+			size, --minsize
+			size+2, --maxsize
 			false, --collisiondetection
 			texture --texture
 		)
@@ -1059,10 +1043,10 @@ minetest.register_entity(fname, {
 })
 end
 
-dmobs.register_fire("dmobs:fire_plyr", "dmobs_fire.png", 2, "fire:basic_flame", true)
-dmobs.register_fire("dmobs:ice_plyr", "dmobs_ice.png", 2, "default:snow", false)
-dmobs.register_fire("dmobs:poison_plyr", "dmobs_poison.png", 2, "air", false)
-dmobs.register_fire("dmobs:lightning_plyr", "dmobs_lightning.png", 2, "air", true)
+dmobs.register_fire("dmobs:fire_plyr", "dmobs_fire.png", 2, "fire:basic_flame", true, false, 0.3, 1)
+dmobs.register_fire("dmobs:ice_plyr", "dmobs_ice.png", 2, "default:ice", false, true, 0.5, 10)
+dmobs.register_fire("dmobs:poison_plyr", "dmobs_poison.png", 2, "air", false, false, 0.3, 1)
+dmobs.register_fire("dmobs:lightning_plyr", "dmobs_lightning.png", 2, "air", true, false, 0, 0.5)
 
 
 
@@ -1170,10 +1154,6 @@ minetest.register_craftitem("dmobs:dragon_gem", {
 	inventory_image = "dmobs_gem.png"
 })
 
--- minetest.register_craftitem("dmobs:dragon_armor_steel", {
-	-- description = "Dragon Armor",
-	-- inventory_image = "dmobs_dragon_armor_inv.png"
--- })
 
 --spawns and eggs
 
@@ -1331,7 +1311,7 @@ mobs:register_mob("dmobs:waterdragon_2", {
 	},
 })
 
-mobs:register_spawn("dmobs:waterdragon", {"default:water_source"}, 20, 10, 64000, 1, 31000, false)
+mobs:register_spawn("dmobs:waterdragon", {"default:water_source"}, 20, 10, 32000, 1, 31000, false)
 
 mobs:register_egg("dmobs:waterdragon", "Boss Waterdragon", "dmobs_egg4.png", 1)
 
@@ -1396,7 +1376,7 @@ mobs:register_mob("dmobs:wyvern", {
 	knock_back = 2,
 })
 
-mobs:register_spawn("dmobs:wyvern",	{"default:leaves"}, 20, 10, 64000, 1, 31000, false)
+mobs:register_spawn("dmobs:wyvern",	{"default:leaves"}, 20, 10, 32000, 1, 31000, false)
 
 mobs:register_egg("dmobs:wyvern", "Boss Wyvern", "dmobs_egg3.png", 1)
 
@@ -1545,12 +1525,15 @@ mobs:register_mob("dmobs:dragon_great_tame", {
 	do_custom = function(self, dtime)
 	if self.driver then
 		object_fly(self, dtime, 10, true, "dmobs:fire_plyr", "walk", "stand")
+		if self.state == "attack" then
+		self.state = "idle"
+		end
 		return false
 		end
 		return true
 	end,
 })
 
-mobs:register_spawn("dmobs:dragon_great", {"default:lava_source"}, 20, 0, 128000, -21000, 1000, false)
+mobs:register_spawn("dmobs:dragon_great", {"default:lava_source"}, 20, 0, 64000, -21000, 1000, false)
 
 mobs:register_egg("dmobs:dragon_great", "Boss Dragon", "dmobs_egg1.png", 1)

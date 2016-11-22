@@ -51,9 +51,9 @@ minetest.register_entity("dmobs:butterfly", {
 --wasps nest
 
 minetest.register_node("dmobs:hive", {
-	description = "Wasp Hive",
+	description = "Wasp Nest",
 	tiles = {"dmobs_hive.png"},
-	groups = {crumbly=1, oddly_breakable_by_hand=1, falling_node=1},
+	groups = {crumbly=1, oddly_breakable_by_hand=1, falling_node=1, flammable=1},
 	on_destruct = function(pos, oldnode)
 		minetest.env:add_entity(pos, "dmobs:wasp")
 		minetest.env:add_entity(pos, "dmobs:wasp")
