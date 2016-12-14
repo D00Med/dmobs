@@ -74,3 +74,4 @@ mobs:register_mob("dmobs:dragon_great_tame", dmobs.deepclone(gdragon_base) )
 
 
 mobs:register_egg("dmobs:dragon_great", "Boss Dragon", "dmobs_egg1.png", 1)
+mobs:register_egg("dmobs:dragon_great_tame", "Great Dragon", "default_lava_source_animated.png", 1)
