@@ -48,6 +48,5 @@ mobs:register_mob("dmobs:rat", {
 	},
 })
 
-mobs:register_spawn("dmobs:rat", {"default:stone","default:sand"}, 20, 0, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:rat", "Giant Rat", "wool_grey.png", 1)

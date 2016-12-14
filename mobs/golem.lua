@@ -44,6 +44,5 @@ mobs:register_mob("dmobs:golem", {
 	},
 })
 
-mobs:register_spawn("dmobs:golem", {"default:stone"}, 7, 0, 16000, 2, 31000)
 
 mobs:register_egg("dmobs:golem", "Stone Golem", "default_stone.png", 1)

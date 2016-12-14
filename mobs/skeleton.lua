@@ -44,6 +44,5 @@ mobs:register_mob("dmobs:skeleton", {
 	},
 })
 
-mobs:register_spawn("dmobs:skeleton", {"default:stone"}, 7, 0, 16000, 2, 31000)
 
 mobs:register_egg("dmobs:skeleton", "Skeleton", "default_dirt.png", 1)

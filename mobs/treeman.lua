@@ -44,6 +44,5 @@ mobs:register_mob("dmobs:treeman", {
 	},
 })
 
-mobs:register_spawn("dmobs:treeman", {"default:leaves", "default:pine_needles"}, 7, 0, 16000, 2, 31000)
 
 mobs:register_egg("dmobs:treeman", "Treeman", "default_tree.png", 1)

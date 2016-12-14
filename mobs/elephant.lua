@@ -54,6 +54,5 @@ mobs:register_mob("dmobs:elephant", {
 	end,
 })
 
-mobs:register_spawn("dmobs:elephant", {"default:dirt_with_dry_grass","default:desert_sand"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:elephant", "Elephant", "default_dry_grass.png", 1)

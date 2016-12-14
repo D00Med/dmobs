@@ -65,6 +65,5 @@ mobs:register_mob("dmobs:pig", {
 	end,
 })
 
-mobs:register_spawn("dmobs:pig", {"default:pine_needles","default:leaves", "nyanland:cloudstone"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:pig", "flying Pig", "wool_pink.png", 1)

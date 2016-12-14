@@ -55,6 +55,5 @@ mobs:register_mob("dmobs:gnorm", {
 	end,
 })
 
-mobs:register_spawn("dmobs:gnorm", {"default:dirt_with_grass","default:wood"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:gnorm", "Gnorm", "default_dirt.png", 1)

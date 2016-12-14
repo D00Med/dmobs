@@ -46,6 +46,5 @@ mobs:register_mob("dmobs:hedgehog", {
 	end,
 })
 
-mobs:register_spawn("dmobs:hedgehog", {"default:dirt_with_grass","default:pine_needles"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:hedgehog", "Hedgehog", "wool_brown.png", 1)

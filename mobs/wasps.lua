@@ -43,8 +43,6 @@ mobs:register_mob("dmobs:wasp", {
 	},
 })
 
-mobs:register_spawn("dmobs:wasp", {"default:dirt_with_grass"}, 20, 10, 32000, 2, 31000)
-mobs:register_spawn("dmobs:wasp", {"dmobs:hive"}, 20, 10, 16000, 2, 31000)
 
 mobs:register_egg("dmobs:wasp", "Wasp", "dmobs_wasp_bg.png", 1)
 
@@ -108,6 +106,5 @@ mobs:register_mob("dmobs:wasp_leader", {
 	},
 })
 
-mobs:register_spawn("dmobs:wasp_leader", {"default:dirt_with_grass","dmobs:hive"}, 20, 10, 64000, 2, 31000)
 
 mobs:register_egg("dmobs:wasp_leader", "King of Sting", "dmobs_wasp_bg.png", 1)

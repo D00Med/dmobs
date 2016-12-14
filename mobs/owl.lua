@@ -42,6 +42,5 @@ mobs:register_mob("dmobs:owl", {
 	},
 })
 
-mobs:register_spawn("dmobs:owl", {"default:leaves","default:tree"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:owl", "Owl", "default_tree.png", 1)

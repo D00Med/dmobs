@@ -58,6 +58,5 @@ mobs:register_mob("dmobs:whale", {
 	end,
 })
 
-mobs:register_spawn("dmobs:whale", {"default:water_source"}, 20, 10, 15000, -20, 1000)
 
 mobs:register_egg("dmobs:whale", "Whale", "default_water_source.png", 1)

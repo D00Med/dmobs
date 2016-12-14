@@ -59,6 +59,5 @@ mobs:register_mob("dmobs:panda", {
 	end,
 })
 
-mobs:register_spawn("dmobs:panda", {"default:dirt_with_grass","ethereal:bamboo_dirt"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:panda", "Panda", "default_papyrus.png", 1)

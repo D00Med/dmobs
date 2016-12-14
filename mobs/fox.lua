@@ -62,6 +62,5 @@ mobs:register_mob("dmobs:fox", {
 	end,
 })
 
-mobs:register_spawn("dmobs:fox", {"default:dirt_with_grass","default:dirt"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:fox", "Fox", "wool_orange.png", 1)

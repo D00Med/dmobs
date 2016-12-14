@@ -53,6 +53,5 @@ mobs:register_mob("dmobs:badger", {
 	end,
 })
 
-mobs:register_spawn("dmobs:badger", {"default:dirt_with_grass","default:dirt"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:badger", "Badger", "default_obsidian.png", 1)

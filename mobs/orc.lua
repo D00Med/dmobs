@@ -47,7 +47,7 @@ mobs:register_mob("dmobs:orc", {
 })
 
 -- Orc (Redesign)
-mobs:register_mob("dmobs:orc_redesign", {
+mobs:register_mob("dmobs:orc2", {
 	type = "monster",
 	passive = false,
 	reach = 1,
@@ -93,11 +93,6 @@ mobs:register_mob("dmobs:orc_redesign", {
 	},
 })
 
-if not dmobs.dragons == true then
-	mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
-else
-	mobs:register_spawn("dmobs:orc", {"default:snow","default:snow_block", "default:desert_sand"}, 20, 10, 3500, 2, 31000)
-end
 
-mobs:register_egg("dmobs:orc_redesign", "Orc (redesign)", "default_desert_sand.png", 1)
+mobs:register_egg("dmobs:orc2", "Morgul Orc", "default_desert_sand.png", 1) -- new and improved, hey
 mobs:register_egg("dmobs:orc", "Orc", "default_desert_sand.png", 1)

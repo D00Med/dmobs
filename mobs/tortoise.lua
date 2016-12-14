@@ -54,6 +54,5 @@ mobs:register_mob("dmobs:tortoise", {
 	end,
 })
 
-mobs:register_spawn("dmobs:tortoise", {"default:clay","default:sand"}, 20, 10, 15000, 2, 31000)
 
 mobs:register_egg("dmobs:tortoise", "Tortoise", "default_grass.png", 1)

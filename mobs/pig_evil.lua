@@ -71,6 +71,5 @@ end
 
 mobs:register_mob("dmobs:pig_evil", pigdef)
 
-mobs:register_spawn("dmobs:pig_evil", {"default:pine_needles","default:leaves"}, 20, 10, 32000, 2, 31000)
 
 mobs:register_egg("dmobs:pig_evil", "Kamikaze Pig", "wool_pink.png", 1)

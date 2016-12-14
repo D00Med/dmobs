@@ -46,10 +46,4 @@ mobs:register_mob("dmobs:ogre", {
 	},
 })
 
-if not dmobs.dragons == true then
-	mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 15000, 2, 31000)
-else
-	mobs:register_spawn("dmobs:ogre", {"default:snow","default:dirt_with_dry_grass", "default:desert_sand"}, 20, 10, 350, 2, 31000)
-end
-
 mobs:register_egg("dmobs:ogre", "Ogre", "default_desert_sand.png", 1)
