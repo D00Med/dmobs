@@ -2,7 +2,7 @@
 
 dmobs.dragon = {}
 
-local step_custom = function(self, dtime)
+dmobs.dragon.step_custom = function(self, dtime)
 	if self.driver then
 		lib_mount.drive(self, dtime, "walk", "stand", true)
 		if self.state == "attack" then
@@ -45,7 +45,7 @@ dmobs.dragon.on_rc = function(self, clicker)
 	if mobs:feed_tame(self, clicker, 1, false, false) then
 		return
 	end
-	dmobs.dragon.ride(self,clicker)
+	dmobs.dragon.ride(self, clicker)
 end
 
 dmobs.dragon.do_custom = function(self, dtime)
