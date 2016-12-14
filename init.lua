@@ -7,10 +7,15 @@ dmobs = {}
 dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
-dmobs.dragons = minetest.setting_getbool("dmobs.dragons") or true
+dmobs.dragons = minetest.setting_getbool("dmobs.dragons") or false
 
 -- Enable fireballs/explosions
 dmobs.destructive = minetest.setting_getbool("dmobs.destructive") or false
+
+-- Timer for the egg mechanics
+dmobs.eggtimer = tonumber(minetest.setting_get("dmobs.eggtimer") ) or 100
+
+
 
 -- Table cloning to reduce code repetition
 dmobs.deepclone = function(t) -- deep-copy a table -- from https://gist.github.com/MihailJP/3931841
