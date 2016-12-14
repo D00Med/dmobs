@@ -79,11 +79,13 @@ else
 	loadmob("dragon4","/dragons/")
 	loadmob("water_dragon","/dragons/")
 	loadmob("wyvern","/dragons/")
+	
+	dofile(minetest.get_modpath("dmobs").."/dragons/eggs.lua")
 	dofile(minetest.get_modpath("dmobs").."/arrows/dragonfire.lua")
 	dofile(minetest.get_modpath("dmobs").."/arrows/dragonarrows.lua")
 end
 
--- Arrow definitions
+-- General arrow definitions
 
 if dmobs.destructive == true then
 	dofile(minetest.get_modpath("dmobs").."/arrows/fire_explosive.lua")
