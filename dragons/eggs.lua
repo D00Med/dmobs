@@ -44,7 +44,7 @@ local function egg_transform(pos, node, clicker, item, _)
 		
 		minetest.chat_send_player(clicker:get_player_name()," ... something seems to be happening .... come back later?")
 		
-		minetest.after(100,
+		minetest.after(dmobs.eggtimer,
 			function(pos, dragon, pname)
 				minetest.set_node(pos, {name="dmobs:dragon_egg_"..dragon_type})
 			end,
@@ -65,13 +65,19 @@ local function egghatch(pos, node, clicker, item, _)
 		   
 		   	minetest.chat_send_player(clicker:get_player_name(), " ... it ... swallowed the gem...")
 		   	
-			minetest.after(100,
+			minetest.after(dmobs.eggtimer,
 				function(pos, dragon, pname)
 					local neweggnode = minetest.get_node(pos).name
 					if eggnode ~= neweggnode then return end -- prevent infinite hatchings
 
 					minetest.remove_node(pos)
-					local ent = minetest.add_entity(pos, "dmobs:dragon_"..details.colour )
+
+					local thedragon = "dmobs:dragon_"..details.colour
+					if eggnode == "dmobs:dragon_egg_great" then
+						thedragon = "dmobs:dragon_great"
+					end
+
+					local ent = minetest.add_entity(pos, thedragon)
 					minetest.sound_play("dmobs_chirrup",{pos=pos,max_hear_distance=20})
 					
 					local obj = ent:get_luaentity()
@@ -126,7 +132,6 @@ base_egg.tiles = {"dmobs_egg4.png"}
 minetest.register_node("dmobs:dragon_egg_ice", dmobs.deepclone(base_egg) )
 
 base_egg.groups.not_in_creative_inventory=nil
---base_egg.tiles = {"dmobs_dragon_egg_great.png"} -- non existent
-base_egg.tiles = {"dmobs_fire.png"}
+base_egg.tiles = {"default_sandstone.png"}
 base_egg.description = "Great Dragon Egg"
 minetest.register_node("dmobs:dragon_egg_great", dmobs.deepclone(base_egg) )
