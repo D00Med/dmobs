@@ -68,7 +68,7 @@ gdragon_base.attacks_monsters = true
 
 gdragon_base.on_rightclick = dmobs.dragon.ride
 	
-gdragon_base.do_custom = dmobs.dragon_do_custom
+gdragon_base.do_custom = dmobs.dragon.do_custom
 
 mobs:register_mob("dmobs:dragon_great_tame", dmobs.deepclone(gdragon_base) )
 

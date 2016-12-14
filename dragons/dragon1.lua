@@ -60,7 +60,7 @@ local dragondef = {
       punch_end = 47,
    },
 	knock_back = 2,
-	do_custom = step_custom,
+	do_custom = dmobs.dragon.step_custom,
 	on_rightclick = dmobs.dragon.on_rc
 }
 
@@ -71,6 +71,6 @@ dragondef.attacks_monsters = true
 
 dragondef.on_rightclick = dmobs.dragon.ride
 	
-dragondef.do_custom = dmobs.dragon_do_custom
+dragondef.do_custom = dmobs.dragon.do_custom
 
 mobs:register_mob("dmobs:dragon_red", dmobs.deepclone(dragondef) )
