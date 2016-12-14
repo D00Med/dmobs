@@ -247,7 +247,7 @@ mobs:register_mob("dmobs:tortoise", {
 
 mobs:register_spawn("dmobs:tortoise", {"default:clay","default:sand"}, 20, 10, 15000, 2, 31000)
 
-mobs:register_egg("dmobs:tortoise", "Panda", "default_grass.png", 1)
+mobs:register_egg("dmobs:tortoise", "Tortoise", "default_grass.png", 1)
 
 mobs:register_mob("dmobs:pig", {
 	type = "animal",
