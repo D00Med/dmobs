@@ -77,6 +77,7 @@ else
 	loadmob("dragon2","/dragons/")
 	loadmob("dragon3","/dragons/")
 	loadmob("dragon4","/dragons/")
+	loadmob("great_dragon","/dragons/")
 	loadmob("water_dragon","/dragons/")
 	loadmob("wyvern","/dragons/")
 	
