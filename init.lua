@@ -8,9 +8,10 @@ dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
 dmobs.dragons = minetest.setting_getbool("dmobs.dragons") or false
+dmobs.regulars = minetest.setting_getbool("dmobs.regulars") or false
 
 -- Enable fireballs/explosions
-dmobs.destructive = minetest.setting_getbool("dmobs.destructive") or false
+dmobs.destructive = minetest.setting_getbool("dmobs.destructive") or true
 
 -- Timer for the egg mechanics
 dmobs.eggtimer = tonumber(minetest.setting_get("dmobs.eggtimer") ) or 100
@@ -68,8 +69,10 @@ local mobslist = {
 	"ogre",
 }
 
-for _,mobname in pairs(mobslist) do
-	loadmob(mobname)
+if dmobs.regulars then
+	for _,mobname in pairs(mobslist) do
+		loadmob(mobname)
+	end
 end
 
 -- dragons!!
@@ -87,9 +90,9 @@ else
 	loadmob("wyvern","/dragons/")
 	
 	dofile(minetest.get_modpath("dmobs").."/dragons/eggs.lua")
-	dofile(minetest.get_modpath("dmobs").."/arrows/dragonfire.lua")
-	dofile(minetest.get_modpath("dmobs").."/arrows/dragonarrows.lua")
 end
+dofile(minetest.get_modpath("dmobs").."/arrows/dragonfire.lua")
+dofile(minetest.get_modpath("dmobs").."/arrows/dragonarrows.lua")
 
 -- General arrow definitions
 
