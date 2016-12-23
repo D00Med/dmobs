@@ -1,5 +1,7 @@
 --dragon
 
+dofile(minetest.get_modpath("dmobs").."/dragons/piloting.lua")
+
 mobs:register_mob("dmobs:dragon", {
    type = "monster",
    passive = false,
@@ -63,6 +65,8 @@ mobs:register_mob("dmobs:dragon", {
 	  punch_end = 47,
    },
 	knock_back = 2,
+	do_custom = dmobs.dragon.step_custom,
+	on_rightclick = dmobs.dragon.on_rc
 })
 
 
