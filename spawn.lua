@@ -40,10 +40,9 @@ end
 
 -- dragons
 
-if not dmobs.dragons then
-	mobs:register_spawn("dmobs:dragon", {"default:leaves","default:dirt_with_grass"}, 20, 10, 64000, 2, 31000)
+mobs:register_spawn("dmobs:dragon", {"default:leaves","default:dirt_with_grass"}, 20, 10, 64000, 2, 31000)
 
-else
+if dmobs.dragons then
 	mobs:register_spawn("dmobs:dragon2", {"default:pine_needles"}, 20, 10, 64000, 2, 31000)
 	mobs:register_spawn("dmobs:dragon3", {"default:acacia_leaves","default:dirt_with_dry_grass"}, 20, 10, 64000, 2, 31000)
 	mobs:register_spawn("dmobs:dragon4", {"default:jungleleaves"}, 20, 10, 64000, 2, 31000)
