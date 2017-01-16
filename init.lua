@@ -7,7 +7,10 @@ dmobs = {}
 dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
-dmobs.dragons = minetest.setting_getbool("dmobs.dragons") or false
+dmobs.dragons = minetest.setting_getbool("dmobs.dragons") 
+if not dmobs.dragons = nil then 
+dmobs.dragons = true
+end
 dmobs.regulars = minetest.setting_getbool("dmobs.regulars") or true
 
 -- Enable fireballs/explosions
