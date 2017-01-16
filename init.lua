@@ -8,11 +8,11 @@ dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
 dmobs.dragons = minetest.setting_getbool("dmobs.dragons") 
-if dmobs.dragons = nil then 
+if dmobs.dragons == nil then 
 dmobs.dragons = true
 end
 dmobs.regulars = minetest.setting_getbool("dmobs.regulars")
-if dmobs.regulars = nil then
+if dmobs.regulars == nil then
 dmobs.regulars = true
 end
 
