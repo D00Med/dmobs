@@ -8,10 +8,14 @@ dofile(minetest.get_modpath("dmobs").."/api.lua")
 
 -- Enable dragons (disable to remove tamed dragons and dragon bosses)
 dmobs.dragons = minetest.setting_getbool("dmobs.dragons") 
-if not dmobs.dragons = nil then 
+if dmobs.dragons = nil then 
 dmobs.dragons = true
 end
-dmobs.regulars = minetest.setting_getbool("dmobs.regulars") or true
+dmobs.regulars = minetest.setting_getbool("dmobs.regulars")
+if dmobs.regulars = nil then
+dmobs.regulars = true
+end
+
 
 -- Enable fireballs/explosions
 dmobs.destructive = minetest.setting_getbool("dmobs.destructive") or false
@@ -59,6 +63,7 @@ local mobslist = {
 	"whale",
 	"badger",
 	"butterfly",
+	"elephant",
 	
 	-- baddies
 	"pig_evil",
