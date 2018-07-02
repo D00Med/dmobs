@@ -44,8 +44,8 @@ mobs:register_mob("dmobs:nyan", {
 
 	},
    do_custom = function(self)
-   local apos = self.object:getpos()
-		local vec = self.object:getvelocity()
+   local apos = self.object:get_pos()
+		local vec = self.object:get_velocity()
 		local part = minetest.add_particlespawner(
 			5, --amount
 			0.3, --time

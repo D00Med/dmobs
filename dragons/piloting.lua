@@ -22,9 +22,9 @@ dmobs.dragon.ride = function(self, clicker)
 			object_detach(self, clicker, {x=1, y=0, z=1})
 			
 			if inv:room_for_item("main", "mobs:saddle") then
-					inv:add_item("main", "mobs:saddle")
+				inv:add_item("main", "mobs:saddle")
 			else
-					minetest.add_item(clicker.getpos(), "mobs:saddle")
+				minetest.add_item(clicker:get_pos(), "mobs:saddle")
 			end
 			
 		elseif not self.driver then

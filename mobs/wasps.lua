@@ -81,8 +81,8 @@ mobs:register_mob("dmobs:wasp_leader", {
 	},
 	do_custom = function(self)
 	if math.random(1, 500) >= 500 then
-		local pos = self.object:getpos()
-		minetest.env:add_entity(pos, "dmobs:wasp")
+		local pos = self.object:get_pos()
+		minetest.add_entity(pos, "dmobs:wasp")
 		end
 	end,
 	replace_rate = 700,
