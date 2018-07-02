@@ -10,7 +10,7 @@ minetest.register_entity(fname, {
 		local remove = minetest.after(2, function() 
 		self.object:remove()
 		end)
-		local pos = self.object:getpos()
+		local pos = self.object:get_pos()
 		local objs = minetest.get_objects_inside_radius({x=pos.x,y=pos.y,z=pos.z}, 2)	
 			for k, obj in pairs(objs) do
 				if obj:get_luaentity() ~= nil then
@@ -28,22 +28,22 @@ minetest.register_entity(fname, {
 							for dz=0,1 do
 								local p = {x=pos.x+dx, y=pos.y, z=pos.z+dz}
 								local t = {x=pos.x+dx, y=pos.y+dy, z=pos.z+dz}
-								local n = minetest.env:get_node(p).name
+								local n = minetest.get_node(p).name
 								if n ~= fname and n ~="default:dirt_with_grass" and n ~="default:dirt_with_dry_grass" and n ~="default:stone"  then	
 									if minetest.registered_nodes[n].groups.flammable --[[or math.random(1, 100) <= 1]] then
-										minetest.env:set_node(t, {name=replace_node})
+										minetest.set_node(t, {name=replace_node})
 									self.object:remove()
 									return
 									end
 									if ice and n == "default:water_source" then
-									minetest.env:set_node(t, {name="default:ice"})
+									minetest.set_node(t, {name="default:ice"})
 									self.object:remove()
 									end
 								end
 							end
 						end
 					end
-		local apos = self.object:getpos()
+		local apos = self.object:get_pos()
 		local part = minetest.add_particlespawner(
 			6, --amount
 			0.3, --time

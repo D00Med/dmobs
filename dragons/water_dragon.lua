@@ -59,7 +59,7 @@ mobs:register_mob("dmobs:waterdragon", {
                 self.hydra = true -- flip switch so this part is done only once
 
                 -- get head position and define a few temp variables
-                local pos = self.object:getpos()
+                local pos = self.object:get_pos()
                 local obj, obj2, ent
 
                 -- add body and make it follow head
