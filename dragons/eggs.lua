@@ -41,6 +41,10 @@ local function egg_transform(pos, node, clicker, item, _)
 				break
 			end
 		end
+		-- default to Great dragon si it doesn't crash
+		if dragon_type == nil then
+			dragon_type = "great"
+		end
 		
 		minetest.chat_send_player(clicker:get_player_name()," ... something seems to be happening .... come back later?")
 		
