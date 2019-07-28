@@ -1,3 +1,5 @@
+-- Hydra
+
 mobs:register_mob("dmobs:waterdragon", {
 	type = "monster",
 	passive = false,
@@ -130,6 +132,3 @@ mobs:register_mob("dmobs:waterdragon_2", {
 		shoot_end = 40,
 	},
 })
-
-
-mobs:register_egg("dmobs:waterdragon", "Boss Waterdragon", "dmobs_egg4.png", 1)

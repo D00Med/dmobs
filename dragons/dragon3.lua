@@ -1,3 +1,5 @@
+-- Poison dragon
+
 local dragondef = {
    type = "monster",
    passive = false,

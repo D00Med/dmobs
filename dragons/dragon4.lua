@@ -1,3 +1,5 @@
+-- Ice dragon
+
 local dragondef = {
    type = "monster",
    passive = false,
@@ -64,14 +66,12 @@ local dragondef = {
 	on_rightclick = dmobs.dragon.on_rc
 }
 
-
 mobs:register_mob("dmobs:dragon4", dmobs.deepclone(dragondef) )
 
 dragondef.type = "npc"
 dragondef.attacks_monsters = true
 
 dragondef.on_rightclick = dmobs.dragon.ride
-	
 dragondef.do_custom = dmobs.dragon.do_custom
 
 mobs:register_mob("dmobs:dragon_blue", dmobs.deepclone(dragondef) )

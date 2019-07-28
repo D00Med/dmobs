@@ -58,6 +58,3 @@ mobs:register_mob("dmobs:wyvern", {
    },
 	knock_back = 2,
 })
-
-
-mobs:register_egg("dmobs:wyvern", "Boss Wyvern", "dmobs_egg3.png", 1)

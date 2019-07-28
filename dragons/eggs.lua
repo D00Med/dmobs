@@ -4,8 +4,8 @@ local dragonpairs = {
 	fire = {colour="red",nest="default:lava_source"},
 	lightning = {colour="black",nest="default:obsidian"},
 	poison = {colour="green",nest="default:cactus"},
-	ice = {colour="black",nest="default:ice"},
-	great = {colour="great",nest=""},
+	ice = {colour="blue",nest="default:ice"},
+	great = {colour="great",nest="default:diamond_block"}, -- You've to deserve greatness !'
 }
 
 local function egg_transform(pos, node, clicker, item, _)
@@ -78,7 +78,7 @@ local function egghatch(pos, node, clicker, item, _)
 
 					local thedragon = "dmobs:dragon_"..details.colour
 					if eggnode == "dmobs:dragon_egg_great" then
-						thedragon = "dmobs:dragon_great"
+						thedragon = "dmobs:dragon_great_tame"
 					end
 
 					local ent = minetest.add_entity(pos, thedragon)
@@ -102,7 +102,10 @@ local function egghatch(pos, node, clicker, item, _)
 	end -- for loop
 end
 
--- Egg form dfinitions -----------------------------------------
+
+---------------------- ---
+-- Egg form definitions --
+--------------------------
 
 local base_egg = { -- base template for all dragon eggs
 	description = "Dragon Egg",
@@ -120,21 +123,25 @@ local base_egg = { -- base template for all dragon eggs
 
 minetest.register_node("dmobs:egg", dmobs.deepclone(base_egg) ) -- clone, to not affect the base template
 
+-- Fire egg
 base_egg.groups.not_in_creative_inventory=1
 base_egg.on_rightclick = egghatch
-
 base_egg.tiles = {"dmobs_egg1.png"}
 minetest.register_node("dmobs:dragon_egg_fire", dmobs.deepclone(base_egg) )
 
+-- Lightning egg
 base_egg.tiles = {"dmobs_egg2.png"}
 minetest.register_node("dmobs:dragon_egg_lightning", dmobs.deepclone(base_egg) )
 
+-- Poison egg
 base_egg.tiles = {"dmobs_egg3.png"}
 minetest.register_node("dmobs:dragon_egg_poison", dmobs.deepclone(base_egg) )
 
+-- Ice egg
 base_egg.tiles = {"dmobs_egg4.png"}
 minetest.register_node("dmobs:dragon_egg_ice", dmobs.deepclone(base_egg) )
 
+-- Great dragon egg
 base_egg.groups.not_in_creative_inventory=nil
 base_egg.tiles = {"default_sandstone.png"}
 base_egg.description = "Great Dragon Egg"

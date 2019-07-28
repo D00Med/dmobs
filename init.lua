@@ -83,11 +83,12 @@ if dmobs.regulars then
 	end
 end
 
--- dragons!!
+---------------
+-- dragons!! --
+---------------
 
-if not dmobs.dragons then
-	loadmob("dragon_normal","/dragons/")
-else
+loadmob("dragon_normal","/dragons/")
+if dmobs.dragons then
 	loadmob("main","/dragons/")
 	loadmob("dragon1","/dragons/")
 	loadmob("dragon2","/dragons/")

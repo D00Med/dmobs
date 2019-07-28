@@ -2,3 +2,5 @@ default
 mobs
 wool
 farming?
+ethereal?
+caverealms?
