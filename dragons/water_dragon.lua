@@ -1,4 +1,4 @@
--- Hydra
+-- Waterdragon (Hydra)
 
 mobs:register_mob("dmobs:waterdragon", {
 	type = "monster",

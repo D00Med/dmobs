@@ -10,7 +10,7 @@ Environements :
 * Lightning : obsidian
 * Poison : cactus
 * Ice : ice
-* Great : gold block
+* Great : diamond block
 
 By defeating special dragons, you can obtain elemental gems.
 
