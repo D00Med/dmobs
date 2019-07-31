@@ -160,9 +160,12 @@ function object_fly(entity, dtime, speed, shoots, arrow, moving_anim, stand_anim
 	local yaw = entity.driver:get_look_yaw();
 	local pos = entity.object:get_pos()
 	local node = minetest.get_node(pos).name
-	if node == "default:water_source" or node == "default:river_water_source" or node == "default:river_water_flowing" or node == "default:water_flowing" then
-		entity.object:set_velocity({x=velo.x*0.9, y=-1, z=velo.z*0.9})
-	elseif ctrl.up then
+
+-- Commented condition makes dragons stuck in water, lava and so on…
+--	if node == "default:water_source" or node == "default:river_water_source" or node == "default:river_water_flowing" or node == "default:water_flowing" or node == "default:lava_source" or node == "default:lava_flowing" then
+--		entity.object:set_velocity({x=velo.x*0.5, y=velo.y*0.5, z=velo.z*0.5})
+--	end
+	if ctrl.up then
 		entity.object:set_yaw(yaw+math.pi+math.pi/2)
 		entity.object:set_velocity(vec_forward)
 	elseif ctrl.down then
@@ -202,8 +205,8 @@ function object_fly(entity, dtime, speed, shoots, arrow, moving_anim, stand_anim
 	end
 end
 
---lib_mount (not required by new functions)
 
+--lib_mount (not required by new functions)
 
 local function is_group(pos, group)
 	local nn = minetest.get_node(pos).name

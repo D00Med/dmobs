@@ -27,6 +27,7 @@ mobs:register_mob("dmobs:waterdragon", {
 	makes_footstep_sound = true,
 	sounds = {
 		random = "mobs_dirtmonster",
+		shoot_attack = "dmobs_wave"
 	},
 	view_range = 15,
 	rotate = 180,
@@ -105,9 +106,9 @@ mobs:register_mob("dmobs:waterdragon_2", {
 	blood_texture = "mobs_blood.png",
 	makes_footstep_sound = true,
    sounds = {
-	  shoot_attack = "mobs_fireball",
-	  random = "velociraptor",
-   },
+		shoot_attack = "dmobs_wave",
+		random = "velociraptor",
+	},
 	view_range = 15,
 	rotate = 180,
 	floats = 0,

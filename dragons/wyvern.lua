@@ -37,7 +37,7 @@ mobs:register_mob("dmobs:wyvern", {
 	  {name = "dmobs:dragon_gem_lightning", chance = 1, min = 1, max = 1},
    },
    sounds = {
-	  shoot_attack = "mobs_fireball",
+	  shoot_attack = "dmobs_poison",
 	  random = "velociraptor",
    },
    water_damage = 0,

@@ -33,12 +33,13 @@ local dragondef = {
 	pathfinding = true,
 	fall_damage = 0,
    sounds = {
-      shoot_attack = "mobs_fireball",
+      shoot_attack = "dmobs_poison",
    },
    walk_velocity = 3,
    run_velocity = 5,
    jump = true,
    fly = true,
+   fly_in = {"air","default:water_source","default:water_flowing"},
    drops = {
       {name = "dmobs:egg", chance = 1, min = 1, max = 1},
       {name = "dmobs:dragon_gem", chance = 1, min = 1, max = 1},

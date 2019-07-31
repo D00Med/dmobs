@@ -37,6 +37,7 @@ local gdragon_base = {
 	run_velocity = 5,
 	jump = true,
 	fly = true,
+	fly_in = {"air","default:water_source","default:water_flowing", "default:lava_source","default:lava_flowing"},
 	drops = {
 		{name = "dmobs:dragon_egg_great", chance = 1, min = 1, max = 1},
 	},

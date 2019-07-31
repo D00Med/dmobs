@@ -1,7 +1,10 @@
+local name = {}
+
 local base_arrow = {
    visual = "sprite",
    visual_size = {x = 0.5, y = 0.5},
    velocity = 8,
+   textures = {},
    tail = 1, -- enable tail
    tail_texture = "dmobs_ice.png",
 
@@ -25,6 +28,7 @@ local base_arrow = {
 }
 
 for _,arrowtype in pairs( {"ice","lightning","poison"} ) do
-	base_arrow.textures = {"dmobs_"..arrowtype..".png"},
-	mobs:register_arrow("dmobs:"..arrowtype, dmobs.deepclone(base_arrow) )
+	base_arrow.textures = {"dmobs_"..arrowtype..".png"}
+	name = "dmobs:"..arrowtype
+	mobs:register_arrow(name, dmobs.deepclone(base_arrow) )
 end

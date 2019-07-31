@@ -64,18 +64,18 @@ if dmobs.regulars then
 		min_light = 0, max_light = 10, interval = 300, chance = 32000, active_object_count = 2, min_height = -30000, max_height = 100})
 	mobs:spawn({name = "dmobs:treeman", nodes = {"group:leaves"}, neighbor = {},
 		min_light = 7, max_light = 15, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 2000})
-	mobs:spawn({name = "dmobs:skeleton", nodes = {"group:stone"}, neighbor = {},
-		min_light = 0, max_light = 10, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 2000})
+	mobs:spawn({name = "dmobs:skeleton", nodes = {"group:stone","caverealms:stone_with_salt","default:desert_sand"}, neighbor = {},
+		min_light = 0, max_light = 10, interval = 300, chance = 16000, active_object_count = 2, min_height = -31000, max_height = -1000})
 
 -- Orcs and ogres spawn more often when dragons are disabled
 	if not dmobs.dragons then
 		mobs:spawn({name = "dmobs:orc",
 			nodes = {"default:snow_block", "default:permafrost_with_moss", "default:permafrost_with_stone", "ethereal:cold_dirt"},
-			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 16000,
+			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 6000,
 			active_object_count = 2, min_height = 0, max_height = 2000})
 		mobs:spawn({name = "dmobs:ogre",
 			nodes = {"default:snow_block", "default:permafrost_with_moss", "default:permafrost_with_stone", "ethereal:cold_dirt"},
-			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 8000,
+			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 16000,
 			active_object_count = 2, min_height = 0, max_height = 2000})
 	else
 		mobs:spawn({name = "dmobs:orc",
@@ -84,7 +84,7 @@ if dmobs.regulars then
 			active_object_count = 2, min_height = 0, max_height = 2000})
 		mobs:spawn({name = "dmobs:ogre",
 			nodes = {"default:snow_block", "default:permafrost_with_moss", "default:permafrost_with_stone", "ethereal:cold_dirt"},
-			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 6000,
+			neighbor = {}, min_light = 0, max_light = 10, interval = 300, chance = 32000,
 			active_object_count = 2, min_height = 0, max_height = 2000})
 	end
 end
@@ -96,22 +96,24 @@ end
 
 -- Generic dragon always spawn, the others only if enabled
 mobs:spawn({name = "dmobs:dragon", nodes = {"group:leaves"}, neighbor = {},
-	min_light = 5, max_light = 15, interval = 300, chance = 24000, active_object_count = 2, min_height = 0, max_height = 30000})
+	min_light = 5, max_light = 15, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 30000})
 
 if dmobs.dragons then
 	mobs:spawn({name = "dmobs:dragon1", nodes = {"ethereal:fiery_dirt", "default:desert_sand"}, neighbor = {},
-		min_light = 5, max_light = 15, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 30000})
+		min_light = 5, max_light = 15, interval = 300, chance = 24000, active_object_count = 2, min_height = 0, max_height = 30000})
 	mobs:spawn({name = "dmobs:dragon2", nodes = {"ethereal:crystal_dirt", "default:dirt_with_dry_grass"}, neighbor = {},
-		min_light = 5, max_light = 15, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 30000})
+		min_light = 5, max_light = 15, interval = 300, chance = 24000, active_object_count = 2, min_height = 0, max_height = 30000})
 	mobs:spawn({name = "dmobs:dragon3", nodes = {"ethereal:jungle_dirt", "default:jungleleaves"}, neighbor = {},
-		min_light = 0, max_light = 10, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 30000})
+		min_light = 0, max_light = 10, interval = 300, chance = 24000, active_object_count = 2, min_height = 0, max_height = 30000})
 	mobs:spawn({name = "dmobs:dragon4",
 		nodes = {"default:snow_block", "default:permafrost_with_moss", "default:permafrost_with_stone", "ethereal:cold_dirt"}, neighbor = {},
-		min_light = 5, max_light = 15, interval = 300, chance = 16000, active_object_count = 2, min_height = 0, max_height = 30000})
-	mobs:spawn({name = "dmobs:waterdragon", nodes = {"default:water_source"}, neighbor = {},
-		min_light = 0, max_light = 15, interval = 300, chance = 1, active_object_count = 2, min_height = -10, max_height = 100})
+		min_light = 5, max_light = 15, interval = 300, chance = 24000, active_object_count = 2, min_height = 0, max_height = 30000})
+	mobs:spawn({name = "dmobs:waterdragon", nodes = {"default:water_source"}, neighbor = {"air"},
+		min_light = 0, max_light = 15, interval = 300, chance = 32000, active_object_count = 2, min_height = -10, max_height = 100})
 	mobs:spawn({name = "dmobs:wyvern", nodes = {"group:leaves"}, neighbor = {},
-		min_light = 0, max_light = 10, interval = 300, chance = 8000, active_object_count = 2, min_height = 0, max_height = 30000})
-	mobs:spawn({name = "dmobs:dragon_great", nodes = {"ethereal:jungle_dirt", "default:jungleleaves"}, neighbor = {},
-		min_light = 0, max_light = 10, interval = 300, chance = 8000, active_object_count = 2, min_height = -30000, max_height = 30000})
+		min_light = 0, max_light = 10, interval = 300, chance = 32000, active_object_count = 2, min_height = 0, max_height = 30000})
+	mobs:spawn({name = "dmobs:dragon_great",
+		nodes = {"ethereal:jungle_dirt", "default:jungleleaves", "default:lava_source", "caverealms:glow_mese",
+			"caverealms:glow_amethyst", "caverealms:glow_crystal", "caverealms:glow_emerald","cavereals:glow_ruby"}, neighbor = {},
+		min_light = 0, max_light = 15, interval = 300, chance = 32000, active_object_count = 2, min_height = -30000, max_height = 30000})
 end
